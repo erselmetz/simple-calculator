@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://w3schools.com/w3css/4/w3.css">
+<title>Title</title>
+</head>
+<body class="w3-pale-red">
+
+    <div class="w3-display-middle w3-border w3-border-black">
+        <input class="w3-block w3-padding-32 w3-cyan" id="textarea" readonly>
+        <div class="w3-row">
+            <input type="button" value="6" id="c" class="w3-btn w3-xxlarge  w3-hover-red">    
+            <input type="button" value="7" id="c" class="w3-btn w3-xxlarge w3-hover-blue">    
+            <input type="button" value="8" id="c" class="w3-btn w3-xxlarge w3-hover-red">    
+            <input type="button" value="/" id="c" class="w3-btn w3-xxlarge w3-hover-purple">    
+        </div>
+        <div class="w3-row">
+            <input type="button" value="4" id="c" class="w3-btn w3-xxlarge w3-hover-blue">    
+            <input type="button" value="5" id="c" class="w3-btn w3-xxlarge w3-hover-red">    
+            <input type="button" value="6" id="c" class="w3-btn w3-xxlarge w3-hover-blue">    
+            <input type="button" value="*" id="c" class="w3-btn w3-xxlarge w3-hover-purple">    
+        </div>
+        <div class="w3-row">
+            <input type="button" value="1" id="c" class="w3-btn w3-xxlarge w3-hover-red">    
+            <input type="button" value="2" id="c" class="w3-btn w3-xxlarge w3-hover-blue">    
+            <input type="button" value="3" id="c" class="w3-btn w3-xxlarge w3-hover-red">    
+            <input type="button" value="-" id="c" class="w3-btn w3-xxlarge w3-hover-purple">    
+        </div>
+        <div class="w3-row">
+            <input type="button" value="0" id="c" class="w3-btn w3-xxlarge w3-hover-amber">    
+            <input type="button" value="." id="c" class="w3-btn w3-xxlarge w3-hover-amber">    
+            <input type="button" value="=" id="equal" class="w3-btn w3-xxlarge  w3-hover-cyan">    
+            <input type="button" value="+" id="c" class="w3-btn w3-xxlarge w3-hover-purple">    
+        </div>
+        <input type="button" value="clear" id="clear" class="w3-btn w3-block w3-xxlarge w3-border">    
+    </div>
+
+    <script>
+        var button = document.querySelectorAll('#c');
+        var equal = document.getElementById('equal');
+        var textArea = document.getElementById('textarea');
+        var clear = document.getElementById('clear');
+
+        button.forEach(function(button){
+            button.addEventListener("click",function(){
+                textArea.value += this.value;
+            });
+        });
+
+        equal.addEventListener('click',function() {
+            textArea.value = eval(textArea.value);
+        });
+
+        clear.addEventListener("click",function() {
+            textArea.value = '';
+        });
+    </script>
+</body>
+</html>
