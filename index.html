@@ -17,30 +17,35 @@
             <div class="w3-border w3-border-black w3-card w3-black">
                 <input class="w3-block w3-cyan w3-xxlarge" id="textarea" readonly>
                 <div class="w3-row">
+                    <input type="button" value="C" id="clear" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">
+                    <input type="button" value="/" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">
+                    <input type="button" value="*" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">
+                    <input type="button" value="&lt;" id="back" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">
+                </div> 
+                <div class="w3-row">
                     <input type="button" value="6" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">    
                     <input type="button" value="7" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-blue">    
                     <input type="button" value="8" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">    
-                    <input type="button" value="/" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-purple">    
+                    <input type="button" value="-" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-purple">    
                 </div>
                 <div class="w3-row">
                     <input type="button" value="4" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-blue">    
                     <input type="button" value="5" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">    
                     <input type="button" value="6" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-blue">    
-                    <input type="button" value="*" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-purple">    
+                    <input type="button" value="+" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-purple">    
                 </div>
                 <div class="w3-row">
                     <input type="button" value="1" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">    
                     <input type="button" value="2" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-blue">    
                     <input type="button" value="3" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">    
-                    <input type="button" value="-" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-purple">    
+                    <input type="button" value="." id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-purple">    
                 </div>
                 <div class="w3-row">
                     <input type="button" value="0" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-amber">    
-                    <input type="button" value="." id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-amber">    
-                    <input type="button" value="=" id="equal" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right  w3-hover-cyan">    
-                    <input type="button" value="+" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-purple">    
+                    <input type="button" value="(" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-amber">    
+                    <input type="button" value=")" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right  w3-hover-cyan">    
+                    <input type="button" value="=" id="equal" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-purple">    
                 </div>
-                <input type="button" value="clear" id="clear" class="w3-btn w3-block w3-xxlarge w3-border"> 
             </div>   
         </div>
     </div>
@@ -50,6 +55,11 @@
         var equal = document.getElementById('equal');
         var textArea = document.getElementById('textarea');
         var clear = document.getElementById('clear');
+        var back = document.getElementById('back');
+
+        back.addEventListener('click',()=>{
+            textArea.value = textArea.value.slice(0, -1);
+        });
 
         button.forEach(function(button){
             button.addEventListener("click",function(){
@@ -57,8 +67,12 @@
             });
         });
 
-        equal.addEventListener('click',function() {
-            textArea.value = eval(textArea.value);
+        equal.addEventListener('click',function(e) {
+            try{
+                textArea.value = eval(textArea.value);
+            }catch{
+                textArea.value = "undefined";
+            }
         });
 
         clear.addEventListener("click",function() {
