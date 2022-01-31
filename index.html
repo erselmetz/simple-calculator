@@ -50,37 +50,6 @@
         </div>
     </div>
 
-    <script>
-        var button = document.querySelectorAll('#c')
-        var equal = document.getElementById('equal')
-        var textArea = document.getElementById('textarea')
-        var clear = document.getElementById('clear')
-        var back = document.getElementById('back')
-
-        back.addEventListener('click',()=>{
-            if(textArea.value == 'undefined'){
-                textArea.value = ''
-            }
-            textArea.value = textArea.value.slice(0, -1)
-        });
-
-        button.forEach(function(button){
-            button.addEventListener("click",function(){
-                textArea.value += this.value
-            });
-        });
-
-        equal.addEventListener('click',function(e) {
-            try{
-                textArea.value = eval(textArea.value)
-            }catch{
-                textArea.value = "undefined"
-            }
-        });
-
-        clear.addEventListener("click",function() {
-            textArea.value = ''
-        });
-    </script>
+    <script src="./app.js"></script>
 </body>
 </html>
