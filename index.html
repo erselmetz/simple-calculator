@@ -5,51 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="Description" content="Enter your description here"/>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet" href="https://w3schools.com/w3css/4/w3.css">
+
+<link rel="stylesheet" href="./dist/style.css">
+
 <title>Simple calculator</title>
 </head>
-<body class="w3-pale-red">
-
-    <div class="d-flex mt-5 justify-content-center text-center">
-        <div class="col-sm-10 col-lg-6">
-            <div class="w3-border w3-border-black w3-card w3-black">
-                <input class="w3-block w3-cyan w3-xxlarge" id="textarea" readonly>
-                <div class="w3-row">
-                    <input type="button" value="C" id="clear" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">
-                    <input type="button" value="/" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">
-                    <input type="button" value="*" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">
-                    <input type="button" value="&lt;" id="back" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">
-                </div> 
-                <div class="w3-row">
-                    <input type="button" value="6" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">    
-                    <input type="button" value="7" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-blue">    
-                    <input type="button" value="8" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">    
-                    <input type="button" value="-" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-purple">    
-                </div>
-                <div class="w3-row">
-                    <input type="button" value="4" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-blue">    
-                    <input type="button" value="5" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">    
-                    <input type="button" value="6" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-blue">    
-                    <input type="button" value="+" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-purple">    
-                </div>
-                <div class="w3-row">
-                    <input type="button" value="1" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">    
-                    <input type="button" value="2" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-blue">    
-                    <input type="button" value="3" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-red">    
-                    <input type="button" value="." id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-purple">    
-                </div>
-                <div class="w3-row">
-                    <input type="button" value="0" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-amber">    
-                    <input type="button" value="(" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-amber">    
-                    <input type="button" value=")" id="c" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right  w3-hover-cyan">    
-                    <input type="button" value="=" id="equal" class="w3-btn w3-xxlarge w3-margin-left w3-margin-right w3-hover-purple">    
+<body class="bg-red-200">
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="w-screen sm:w-auto">
+            <div class="border-4 border-black rounded-xl ">
+                <input class="w-full p-2 text-2xl bg-rose-300" id="textarea" readonly>
+                <div class="grid grid-cols-4 gap-4 p-2 my-2">
+                    <input type="button" value="C" id="clear" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">
+                    <input type="button" value="/" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">
+                    <input type="button" value="*" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">
+                    <input type="button" value="&lt;" id="back" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">
+                    
+                    <input type="button" value="6" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                    <input type="button" value="7" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                    <input type="button" value="8" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                    <input type="button" value="-" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                
+                    <input type="button" value="4" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                    <input type="button" value="5" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                    <input type="button" value="6" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                    <input type="button" value="+" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                
+                    <input type="button" value="1" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                    <input type="button" value="2" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                    <input type="button" value="3" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                    <input type="button" value="." id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                
+                    <input type="button" value="0" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                    <input type="button" value="(" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                    <input type="button" value=")" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                    <input type="button" value="=" id="equal" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
+                
                 </div>
             </div>   
         </div>
     </div>
-
-    <script src="./app.js"></script>
+    <script src="./dist/app.js"></script>
 </body>
 </html>
