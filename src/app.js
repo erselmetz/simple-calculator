@@ -13,7 +13,11 @@ back.addEventListener('click',()=>{
 
 button.forEach(function(button){
     button.addEventListener("click",function(){
-        textArea.value += this.value
+        if(textArea.value == 'undefined'){
+            textArea.value = this.value
+        }else{
+            textArea.value += this.value
+        }
     });
 });
 
