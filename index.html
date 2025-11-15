@@ -4,45 +4,302 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="Description" content="Enter your description here"/>
+<meta name="Description" content="A simple, accessible calculator with keyboard support, calculation history, and dark mode"/>
 
 <link rel="stylesheet" href="./style.css">
 
-<title>Simple calculator</title>
+<title>Simple Calculator</title>
 </head>
 <body class="bg-red-200">
-    <div class="flex items-center justify-center min-h-screen">
-        <div class="w-screen sm:w-auto">
-            <div class="border-4 border-black">
-                <input class="w-full p-2 text-2xl bg-rose-300" id="textarea" readonly>
-                <div class="grid grid-cols-4 gap-4 p-2 my-2">
-                    <input type="button" value="C" id="clear" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">
-                    <input type="button" value="/" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">
-                    <input type="button" value="*" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">
-                    <input type="button" value="&lt;" id="back" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">
-                    
-                    <input type="button" value="6" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                    <input type="button" value="7" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                    <input type="button" value="8" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                    <input type="button" value="-" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                
-                    <input type="button" value="4" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                    <input type="button" value="5" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                    <input type="button" value="6" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                    <input type="button" value="+" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                
-                    <input type="button" value="1" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                    <input type="button" value="2" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                    <input type="button" value="3" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                    <input type="button" value="." id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                
-                    <input type="button" value="0" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                    <input type="button" value="(" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                    <input type="button" value=")" id="c" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                    <input type="button" value="=" id="equal" class="p-2 rounded bg-rose-400 sm:hover:bg-rose-300">    
-                
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="calculator-wrapper">
+            <!-- Header with controls -->
+            <div class="calculator-header">
+                <h1 class="calculator-title">Calculator</h1>
+                <div class="calculator-controls">
+                    <button 
+                        id="copy-btn" 
+                        class="control-btn"
+                        aria-label="Copy result"
+                        title="Copy (Ctrl+C)">
+                        📋
+                    </button>
+                    <button 
+                        id="sound-toggle" 
+                        class="control-btn" 
+                        aria-label="Toggle sound effects"
+                        title="Toggle sound (S)">
+                        🔊
+                    </button>
+                    <button 
+                        id="history-toggle" 
+                        class="control-btn" 
+                        aria-label="Toggle calculation history"
+                        aria-expanded="false"
+                        title="History (H)">
+                        📜
+                    </button>
+                    <button 
+                        id="theme-toggle" 
+                        class="control-btn" 
+                        aria-label="Switch to dark mode"
+                        title="Toggle theme (T)">
+                        🌙
+                    </button>
                 </div>
-            </div>   
+            </div>
+
+            <!-- Calculator -->
+            <div class="border-4 border-black rounded-lg overflow-hidden shadow-2xl calculator-container">
+                <input 
+                    class="w-full p-4 sm:p-6 text-xl sm:text-2xl md:text-3xl bg-rose-300 text-right font-semibold focus:outline-none calculator-display" 
+                    id="textarea" 
+                    readonly
+                    aria-label="Calculator display"
+                    aria-live="polite"
+                    aria-atomic="true">
+                
+                <div class="grid grid-cols-5 gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 md:p-4 bg-gray-100 calculator-buttons">
+                    <!-- Row 1: Memory and Scientific Functions -->
+                    <input 
+                        type="button" 
+                        value="MC" 
+                        id="memory-clear"
+                        data-type="memory"
+                        class="calc-btn memory-btn"
+                        aria-label="Memory Clear"
+                        title="Memory Clear">
+                    <input 
+                        type="button" 
+                        value="MR" 
+                        id="memory-recall"
+                        data-type="memory"
+                        class="calc-btn memory-btn"
+                        aria-label="Memory Recall"
+                        title="Memory Recall">
+                    <input 
+                        type="button" 
+                        value="M-" 
+                        id="memory-subtract"
+                        data-type="memory"
+                        class="calc-btn memory-btn"
+                        aria-label="Memory Subtract"
+                        title="Memory Subtract">
+                    <input 
+                        type="button" 
+                        value="M+" 
+                        id="memory-add"
+                        data-type="memory"
+                        class="calc-btn memory-btn"
+                        aria-label="Memory Add"
+                        title="Memory Add">
+                    <input 
+                        type="button" 
+                        value="√" 
+                        data-type="scientific"
+                        class="calc-btn scientific-btn"
+                        aria-label="Square root"
+                        title="Square root">
+                    
+                    <!-- Row 2: Scientific Functions and Clear -->
+                    <input 
+                        type="button" 
+                        value="x²" 
+                        data-type="scientific"
+                        class="calc-btn scientific-btn"
+                        aria-label="Square"
+                        title="Square (x²)">
+                    <input 
+                        type="button" 
+                        value="x^y" 
+                        data-type="scientific"
+                        class="calc-btn scientific-btn"
+                        aria-label="Power"
+                        title="Power (x^y)">
+                    <input 
+                        type="button" 
+                        value="%" 
+                        data-type="percentage"
+                        class="calc-btn operator-btn"
+                        aria-label="Percentage"
+                        title="Percentage (%)">
+                    <input 
+                        type="button" 
+                        value="C" 
+                        id="clear" 
+                        class="calc-btn operator-btn"
+                        aria-label="Clear"
+                        title="Clear (Esc)">
+                    <input 
+                        type="button" 
+                        value="⌫" 
+                        id="back" 
+                        class="calc-btn operator-btn"
+                        aria-label="Backspace"
+                        title="Backspace (Backspace)">
+                    
+                    <!-- Row 3: Operators -->
+                    <input 
+                        type="button" 
+                        value="(" 
+                        data-type="operator"
+                        class="calc-btn operator-btn"
+                        aria-label="Open parenthesis"
+                        title="Open parenthesis (">
+                    <input 
+                        type="button" 
+                        value=")" 
+                        data-type="operator"
+                        class="calc-btn operator-btn"
+                        aria-label="Close parenthesis"
+                        title="Close parenthesis )">
+                    <input 
+                        type="button" 
+                        value="/" 
+                        data-type="operator"
+                        class="calc-btn operator-btn"
+                        aria-label="Divide"
+                        title="Divide (/)">
+                    <input 
+                        type="button" 
+                        value="*" 
+                        data-type="operator"
+                        class="calc-btn operator-btn"
+                        aria-label="Multiply"
+                        title="Multiply (*)">
+                    <input 
+                        type="button" 
+                        value="π" 
+                        data-type="constant"
+                        class="calc-btn constant-btn"
+                        aria-label="Pi"
+                        title="Pi (π)">
+                    
+                    <!-- Row 4: 7, 8, 9, Subtract -->
+                    <input 
+                        type="button" 
+                        value="7" 
+                        data-type="number"
+                        class="calc-btn number-btn"
+                        aria-label="Seven">
+                    <input 
+                        type="button" 
+                        value="8" 
+                        data-type="number"
+                        class="calc-btn number-btn"
+                        aria-label="Eight">
+                    <input 
+                        type="button" 
+                        value="9" 
+                        data-type="number"
+                        class="calc-btn number-btn"
+                        aria-label="Nine">
+                    <input 
+                        type="button" 
+                        value="-" 
+                        data-type="operator"
+                        class="calc-btn operator-btn"
+                        aria-label="Subtract"
+                        title="Subtract (-)">
+                
+                    <!-- Row 3: 4, 5, 6, Add -->
+                    <input 
+                        type="button" 
+                        value="4" 
+                        data-type="number"
+                        class="calc-btn number-btn"
+                        aria-label="Four">
+                    <input 
+                        type="button" 
+                        value="5" 
+                        data-type="number"
+                        class="calc-btn number-btn"
+                        aria-label="Five">
+                    <input 
+                        type="button" 
+                        value="6" 
+                        data-type="number"
+                        class="calc-btn number-btn"
+                        aria-label="Six">
+                    <input 
+                        type="button" 
+                        value="+" 
+                        data-type="operator"
+                        class="calc-btn operator-btn"
+                        aria-label="Add"
+                        title="Add (+)">
+                
+                    <!-- Row 5: 1, 2, 3, Subtract, Equals -->
+                    <input 
+                        type="button" 
+                        value="1" 
+                        data-type="number"
+                        class="calc-btn number-btn"
+                        aria-label="One">
+                    <input 
+                        type="button" 
+                        value="2" 
+                        data-type="number"
+                        class="calc-btn number-btn"
+                        aria-label="Two">
+                    <input 
+                        type="button" 
+                        value="3" 
+                        data-type="number"
+                        class="calc-btn number-btn"
+                        aria-label="Three">
+                    <input 
+                        type="button" 
+                        value="-" 
+                        data-type="operator"
+                        class="calc-btn operator-btn"
+                        aria-label="Subtract"
+                        title="Subtract (-)">
+                    <input 
+                        type="button" 
+                        value="=" 
+                        id="equal" 
+                        class="calc-btn equals-btn"
+                        aria-label="Equals"
+                        title="Calculate (Enter or =)">
+                
+                    <!-- Row 6: 0, Decimal, Add -->
+                    <input 
+                        type="button" 
+                        value="0" 
+                        data-type="number"
+                        class="calc-btn number-btn"
+                        aria-label="Zero">
+                    <input 
+                        type="button" 
+                        value="." 
+                        data-type="number"
+                        class="calc-btn number-btn"
+                        aria-label="Decimal point"
+                        title="Decimal point (.)">
+                    <input 
+                        type="button" 
+                        value="+" 
+                        data-type="operator"
+                        class="calc-btn operator-btn"
+                        aria-label="Add"
+                        title="Add (+)"
+                        style="grid-column: span 3;">
+                </div>
+            </div>
+
+            <!-- History Panel -->
+            <div id="history-container" class="history-container hidden" role="region" aria-label="Calculation history">
+                <div class="history-header">
+                    <h2>History</h2>
+                    <button 
+                        id="clear-history" 
+                        class="clear-history-btn"
+                        aria-label="Clear history">
+                        Clear
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     <script src="./app.js"></script>
