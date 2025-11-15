@@ -153,7 +153,7 @@ Simple Calculator - A modern web calculator application
 
 ## 🌐 Demo
 
-Live demo available at: http://calculator.vercel.app
+Live demo available at: https://erselmetz.github.io/simple-calculator/
 
 ---
 
